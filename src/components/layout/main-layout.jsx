@@ -24,9 +24,8 @@ const MainLayout = ({ children }) => {
 
         {/* Main Content - Flexible height with proper overflow */}
         <main
-          className={`flex-1 p-4 sm:p-6 overflow-y-auto transition-all duration-300 ease-in-out ${
-            isSidebarOpen ? "lg:ml-64" : ""
-          }`}
+          className={`flex-1 p-4 sm:p-6 overflow-y-auto transition-all duration-300 ease-in-out ${isSidebarOpen ? "lg:ml-64" : ""
+            }`}
         >
           <div className="container mx-auto max-w-7xl">{children}</div>
         </main>

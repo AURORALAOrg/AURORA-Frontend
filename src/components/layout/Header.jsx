@@ -7,6 +7,7 @@ import { useWallet } from "../../context/WalletContext"
 import { truncateAddress } from "../../utils/helpers"
 import ConnectWalletButton from "./ui/connect-wallet-button"
 
+
 const mockNotifications = [
   {
     id: "1",
@@ -34,7 +35,7 @@ const mockNotifications = [
 const Header = ({ onMenuClick }) => {
   const { address } = useWallet()
   const [currentPage, setCurrentPage] = useState("home")
-  const [activeTooltip, setActiveTooltip] = useState(null)
+  // const [activeTooltip, setActiveTooltip] = useState(null)
   const [notifications, setNotifications] = useState(mockNotifications)
   const [isOpen, setIsOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
@@ -76,8 +77,10 @@ const Header = ({ onMenuClick }) => {
   }
 
   const handleLogin = () => {
-    console.log("Iniciando sesión...")
-    setIsLoggedIn(true)
+    // console.log("Iniciando sesión...")
+    // setIsLoggedIn(true)
+
+    navigate("/login")
   }
 
   const handleLogout = () => {
@@ -88,7 +91,7 @@ const Header = ({ onMenuClick }) => {
 
   return (
     <header className="h-16 border-b border-blue-100 bg-white px-6 shadow-sm">
-      <div className="flex items-center justify-between h-full">
+      <div className="flex items-center justify-between h-full max-w-[1440px] mx-auto">
         {/* Logo and Menu Button */}
         <div className="flex items-center">
           <button
@@ -110,9 +113,8 @@ const Header = ({ onMenuClick }) => {
               <button
                 key={item}
                 onClick={() => handleNavClick(item.toLowerCase())}
-                className={`text-sm font-medium hover:text-blue-600 transition-colors ${
-                  currentPage === item.toLowerCase() ? "text-blue-600 border-b-2 border-blue-500" : "text-gray-600"
-                }`}
+                className={`text-sm font-medium hover:text-blue-600 transition-colors ${currentPage === item.toLowerCase() ? "text-blue-600 border-b-2 border-blue-500" : "text-gray-600"
+                  }`}
               >
                 {item}
               </button>
@@ -149,7 +151,7 @@ const Header = ({ onMenuClick }) => {
                   </div>
                 ))
               ) : (
-                <div className="px-4 py-3 text-gray-500 text-center">No results found for "{searchQuery}"</div>
+                <div className="px-4 py-3 text-gray-500 text-center">No results found for &quot;{searchQuery}&quot;</div>
               )}
             </div>
           )}
@@ -204,9 +206,8 @@ const Header = ({ onMenuClick }) => {
                     notifications.map((notification) => (
                       <div
                         key={notification.id}
-                        className={`px-4 py-3 border-b border-blue-50 hover:bg-blue-50 transition-colors cursor-pointer ${
-                          !notification.isRead ? "bg-blue-50" : ""
-                        }`}
+                        className={`px-4 py-3 border-b border-blue-50 hover:bg-blue-50 transition-colors cursor-pointer ${!notification.isRead ? "bg-blue-50" : ""
+                          }`}
                         onClick={() => navigate("/notifications")}
                       >
                         <div className="flex justify-between">
