@@ -1,0 +1,153 @@
+name: Frontend Tests CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop, "feature/*" ]
+  pull_request:
+    branches: [ main, develop, "feature/*" ]
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Linting
+        run: npm run lint
+
+      - name: Type Checking
+        run: |
+          if [ -f "tsconfig.json" ]; then
+            echo "TypeScript project detected, running type check"
+            npx tsc --noEmit
+          else
+            echo "No TypeScript config found, skipping type check"
+          fi
+
+  unit-tests:
+    name: Unit and Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Tests
+        run: npm test -- --coverage
+
+      - name: Check Code Coverage
+        run: |
+          COVERAGE=$(npx jest --coverage --coverageReporters=text-summary | grep "All files" | awk '{print $4}' | cut -d'%' -f1)
+          if [ "$COVERAGE" -lt 70 ]; then
+            echo "Code coverage is below 70% ($COVERAGE%). Pipeline failed."
+            exit 1
+          else
+            echo "Code coverage is $COVERAGE%, which meets the minimum requirement of 70%."
+          fi
+
+  accessibility-tests:
+    name: Accessibility Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+          npm install -g @axe-core/cli
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Run Accessibility Scan
+        run: |
+          npx serve dist &
+          sleep 5
+          axe http://localhost:5000 --exit
+
+  e2e-tests:
+    name: End-to-End Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps
+
+      - name: Run E2E Tests
+        run: npm run test:e2e
+
+  performance-tests:
+    name: Performance Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli @lhci/cli@next
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Run Lighthouse
+        run: |
+          lhci autorun --collect.url=http://localhost:5000 || exit 1
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify-slack:
+    name: Notify Slack on Test Failures
+    needs: [code-quality, unit-tests, accessibility-tests, e2e-tests, performance-tests]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: "🚨 Tests failed in ${{ github.ref }} branch! Check the pipeline for details."
