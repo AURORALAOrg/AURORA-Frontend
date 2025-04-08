@@ -4,7 +4,7 @@ import { useState } from "react"
 import Footer from "./Footer"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
-
+import TestimonialsSection from "../testimonials"
 const MainLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
@@ -27,7 +27,9 @@ const MainLayout = ({ children }) => {
           className={`flex-1 p-4 sm:p-6 overflow-y-auto transition-all duration-300 ease-in-out ${isSidebarOpen ? "lg:ml-64" : ""
             }`}
         >
-          <div className="container mx-auto max-w-7xl">{children}</div>
+          <div className="container mx-auto max-w-7xl">{children}
+            <TestimonialsSection />
+          </div>
         </main>
 
         {/* Footer - Adjusts with sidebar */}

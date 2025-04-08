@@ -39,13 +39,14 @@ import Analytics from "@/pages/aurora-site/analytics"
 
 // 🏠 Main Pages
 import HomePage from "@/pages/aurora-site/home"
+import TestimonialsPage from "./components/TestimonialsPage";
 
 // 🧩 Games & Challenges
 import StoryGame from "@/pages/games/story-game"
 import WordMatching from "@/pages/games/word-matching"
 import GamePanel from "@/pages/games/game-panel"
-import DifficultySelector from "@/components/games/memory-card/difficulty-selector"
-import GameBoard from "@/components/games/memory-card/game-board"
+import DifficultySelector from "@/components/Games/memory-card/difficulty-selector"
+import GameBoard from "@/components/Games/memory-card/game-board"
 import WordScrambleGame from "@/components/Games/word-scramble/word-scramble-game";
 
 
@@ -73,10 +74,13 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/verify-email" element={<VerifyEmailPage />} />
+            
 
 
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              
             </Route>
 
             {/* Protected routes with MainLayout */}
@@ -91,6 +95,7 @@ function App() {
                 <Route path="/aurora-chat" element={<AuroraChat />} />
                 <Route path="/certification-content" element={<CertificationContent />} />
                 <Route path="/module-details" element={<ModuleDetails />} />
+                
 
                 <Route path="/practiceSystem" element={<PracticeSystem />} />
                 <Route path="/practice/sentence-builder" element={<SentenceBuilder />} />
