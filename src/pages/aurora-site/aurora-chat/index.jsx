@@ -181,8 +181,8 @@ const AuroraChat = () => {
           {/* Left: Profile Section */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-blue-100 ring-offset-2">
-              <img 
-                src={auroraImage} 
+              <img
+                src={auroraImage}
                 alt="Aurora Profile"
                 className="w-full h-full object-cover"
               />
