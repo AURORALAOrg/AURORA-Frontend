@@ -8,11 +8,13 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           dark: "#2563EB",
+          ebony: "#111828",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           dark: "#D97706",
+          lightgray:"#D1D5DB",
           foreground: "hsl(var(--secondary-foreground))",
         },
         tertiary: {

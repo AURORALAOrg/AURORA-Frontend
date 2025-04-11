@@ -1,6 +1,14 @@
 import React from "react";
-import { ArrowRight, Brain, BookOpen, MessageSquare, Award, BarChart2 } from "lucide-react";
+import {
+  ArrowRight,
+  Brain,
+  BookOpen,
+  MessageSquare,
+  Award,
+  BarChart2,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
+import CoursesSection from "@/components/landing-page/CoursesSection";
 import AuroraIcon from "@/assets/Aurora_word.jpg";
 
 const FeatureCard = ({ icon: Icon, title, description }) => (
@@ -26,12 +34,10 @@ const BenefitItem = ({ title, description }) => (
 );
 
 const HomePage = () => {
-
-
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
+
       <nav className="bg-white border-b">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
@@ -57,9 +63,11 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold text-white mb-8">
               Ready to Transform Your English Learning Journey?
             </h2>
-            <button
-              className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 hover:bg-opacity-90 transition-colors">
-              <NavLink data-testid="get-started" to="wallet-connection"> Get Started Now</NavLink>
+            <button className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 hover:bg-opacity-90 transition-colors">
+              <NavLink data-testid="get-started" to="wallet-connection">
+                {" "}
+                Get Started Now
+              </NavLink>
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
@@ -137,19 +145,18 @@ const HomePage = () => {
               Your Personalized Virtual English Tutor
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              AURORA combines cutting-edge AI with blockchain technology to deliver a revolutionary
-              approach to language learning. Experience personalized tutoring that adapts to your needs.
+              AURORA combines cutting-edge AI with blockchain technology to
+              deliver a revolutionary approach to language learning. Experience
+              personalized tutoring that adapts to your needs.
             </p>
-            <button
-
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+            <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
               Get Started
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
       </div>
-
+      <CoursesSection />
     </div>
   );
 };
