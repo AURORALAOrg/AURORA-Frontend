@@ -46,7 +46,7 @@ import WordMatching from "@/pages/games/word-matching"
 import GamePanel from "@/pages/games/game-panel"
 import DifficultySelector from "@/components/games/memory-card/difficulty-selector"
 import GameBoard from "@/components/games/memory-card/game-board"
-import WordScrambleGame from "@/components/Games/word-scramble/word-scramble-game";
+import WordScrambleGame from "@/components/games/word-scramble/word-scramble-game";
 
 
 // 📝 Practices & Exercises

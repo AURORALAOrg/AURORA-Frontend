@@ -2,16 +2,15 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "@/context/AuthContext"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardFooter, } from "@/components/ui/card"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Loader2, Eye, EyeOff } from "lucide-react"
 
-// Define validation schema
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
@@ -23,10 +22,6 @@ export default function LoginForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
-  const location = useLocation()
-
-  // Get the intended destination from location state, or default to homepage
-  const from = location.state?.from?.pathname || "/learning-content"
 
   const {
     register,
@@ -46,8 +41,8 @@ export default function LoginForm() {
       setFormError(null)
       await login(data.email, data.password)
 
-      // Navigate to the intended destination after successful login
-      navigate(from, { replace: true })
+      // ✅ Redirigir directamente al home después de login
+      navigate("/", { replace: true })
     } catch (error) {
       setFormError(error?.response?.data?.message || "Login failed. Please try again.")
     } finally {
@@ -126,4 +121,3 @@ export default function LoginForm() {
     </Card>
   )
 }
-
