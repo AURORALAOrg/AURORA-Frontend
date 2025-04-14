@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom"
 import Footer from "./Footer"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
+import SkillsSection from "../skills/skills-section"
 
 const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -30,6 +31,7 @@ const MainLayout = () => {
           }`}
         >
           <div className="container mx-auto max-w-7xl">
+            <SkillsSection />
             <Outlet /> 
           </div>
         </main>
