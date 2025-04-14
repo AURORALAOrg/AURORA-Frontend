@@ -40,6 +40,7 @@ import Analytics from "@/pages/aurora-site/analytics"
 // 🏠 Main Pages
 import HomePage from "@/pages/aurora-site/home"
 
+
 // 🧩 Games & Challenges
 import StoryGame from "@/pages/games/story-game"
 import WordMatching from "@/pages/games/word-matching"
@@ -73,10 +74,13 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/verify-email" element={<VerifyEmailPage />} />
+            
 
 
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
+              
+              
             </Route>
 
             {/* Protected routes with MainLayout */}
@@ -91,6 +95,7 @@ function App() {
                 <Route path="/aurora-chat" element={<AuroraChat />} />
                 <Route path="/certification-content" element={<CertificationContent />} />
                 <Route path="/module-details" element={<ModuleDetails />} />
+                
 
                 <Route path="/practiceSystem" element={<PracticeSystem />} />
                 <Route path="/practice/sentence-builder" element={<SentenceBuilder />} />
