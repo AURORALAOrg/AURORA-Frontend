@@ -1,12 +1,5 @@
+import { ArrowRight, Award, Brain, MessageSquare } from "lucide-react";
 import React from "react";
-import {
-  ArrowRight,
-  Brain,
-  BookOpen,
-  MessageSquare,
-  Award,
-  BarChart2,
-} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 import AuroraIcon from "@/assets/Aurora_word.jpg";
@@ -156,7 +149,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-  
     </div>
   );
 };
