@@ -66,6 +66,7 @@ import GrammarContent from "@/pages/aurora-site/grammar-content";
 
 // ✨ Question Creator
 import QuestionCreator from "@/components/practices/question-creator/question-creator";
+import BusinessEnglishPage from "./pages/learning/business-english";
 
 function App() {
   return (
@@ -80,6 +81,14 @@ function App() {
 
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
+              <Route
+                path="/learning/business-english"
+                element={<BusinessEnglishPage />}
+              />
+              <Route
+                path="/learning/business-english/:lessonId"
+                element={<></>}
+              />
             </Route>
 
             {/* Protected routes with MainLayout */}
