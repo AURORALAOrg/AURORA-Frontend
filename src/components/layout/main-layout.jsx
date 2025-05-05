@@ -14,7 +14,10 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen overflow-hidden bg-gray-50">
+    <div className={`flex w-full min-h-screen overflow-hidden ${
+        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
+      }`}
+    >
       {/* Sidebar */}
       <Sidebar
         isOpen={isSidebarOpen}
