@@ -23,6 +23,8 @@ import ListeningPage from "@/pages/aurora-site/learning/listening-content";
 import ReadingContent from "@/pages/aurora-site/learning/reading-content";
 import SpeakingPage from "@/pages/aurora-site/learning/speaking-content";
 import VocabularyPage from "@/pages/aurora-site/learning/vocabulary-content";
+import BusinessEnglishPage from "@/pages/aurora-site/learning/business-english";
+import LessonDetail from "@/pages/aurora-site/learning/business-english/lesson-detail";
 
 // 🎓 Certifications & Courses
 import CertificationContent from "@/pages/aurora-site/english-level/english-level-content";
@@ -69,6 +71,9 @@ import GrammarContent from "@/pages/aurora-site/grammar-content";
 // ✨ Question Creator
 import QuestionCreator from "@/components/practices/question-creator/question-creator";
 
+// Demo Page
+import DemoPage from "@/pages/demo/demo-page";
+
 function App() {
   return (
     <Router>
@@ -84,6 +89,7 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/course-listing" element={<CourseListing />} />
+              <Route path="/demo" element={<DemoPage />} />
             </Route>
 
             {/* Protected routes with MainLayout */}
@@ -100,17 +106,7 @@ function App() {
                 <Route path="/certification-content"element={<CertificationContent />}/>
                 <Route path="/module-details" element={<ModuleDetails />} />
                 <Route path="/practiceSystem" element={<PracticeSystem />} />
-                <Route path="/practice/sentence-builder" element={<SentenceBuilder />}/>
-                <Route path="/practice/idiom-challenge" element={<IdiomChallenge />}/>
-                <Route path="/practice/drag-drop-sentence-builder" element={<PracticeSystem />} />
-                <Route path="/notifications" element={<Notifications />} />
-                <Route path="/story-game" element={<StoryGame />} />
-                <Route path="/games/word-matching/" element={<WordMatching />} />
-                <Route path="/games" element={<GamePanel />} />
-                <Route path="/games/memory-card" element={<DifficultySelector />}/>
-                <Route path="/games/memory-card/:levelId" element={<GameBoard />} />
-                <Route path="/practice/quiz" element={<Quiz />} />
-                <Route path="/practice/fill-in-the-blanks"element={<FillInTheBlanksQuizPage />}/>
+
                 <Route path="/grammar" element={<GrammarContent />} />
                 <Route path="/vocabulary" element={<VocabularyPage />} />
                 <Route path="/speaking" element={<SpeakingPage />} />
@@ -118,11 +114,7 @@ function App() {
                 <Route path="/reading" element={<ReadingContent />} />
                 <Route path="/community" element={<CommunityInteractionPage />} />
                 <Route path="/question-creator" element={<QuestionCreator />} />
-              {/*</Route>*/}
-            </Route>
 
-            {/* Redirect any unknown routes to login */}
-            {/*<Route path="*" element={<Navigate to="/login" />} />*/}
           </Routes>
         </AuthProvider>
       </ToastContextProvider>
