@@ -34,6 +34,7 @@ import Notifications from "@/pages/aurora-site/notifications";
 import SettingsPage from "@/pages/aurora-site/settings";
 import WalletConnection from "@/pages/aurora-site/wallet/wallet-connection";
 
+
 // 🌐 Community & Interaction
 import AuroraChat from "@/pages/aurora-site/aurora-chat";
 import CommunityInteractionPage from "@/pages/aurora-site/community/community";
@@ -44,6 +45,7 @@ import Categories from "@/pages/aurora-site/categories";
 
 // 🏠 Main Pages
 import HomePage from "@/pages/aurora-site/home";
+import BusinessEnglishPage from "./pages/learning/business-english";
 
 // 🧩 Games & Challenges
 import StoryGame from "@/pages/games/story-game";
@@ -85,6 +87,8 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/course-listing" element={<CourseListing />} />
+              <Route path="/learning/business-english" element={<BusinessEnglishPage />}/>
+              <Route path="/learning/business-english/:lessonId" element={<></>}/>
             </Route>
 
             {/* Protected routes with MainLayout */}
