@@ -23,6 +23,7 @@ import ListeningPage from "@/pages/aurora-site/learning/listening-content";
 import ReadingContent from "@/pages/aurora-site/learning/reading-content";
 import SpeakingPage from "@/pages/aurora-site/learning/speaking-content";
 import VocabularyPage from "@/pages/aurora-site/learning/vocabulary-content";
+import BusinessEnglish from "@/pages/learning/business-english";
 
 // 🎓 Certifications & Courses
 import CertificationContent from "@/pages/aurora-site/english-level/english-level-content";
@@ -85,6 +86,7 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/course-listing" element={<CourseListing />} />
+             
             </Route>
 
             {/* Protected routes with MainLayout */}
@@ -120,6 +122,8 @@ function App() {
                 <Route path="/reading" element={<ReadingContent />} />
                 <Route path="/community" element={<CommunityInteractionPage />} />
                 <Route path="/question-creator" element={<QuestionCreator />} />
+                 <Route path="/business-english" element={<BusinessEnglish />} />
+                
               {/*</Route>*/}
             </Route>
 
