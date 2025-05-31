@@ -12,6 +12,7 @@ import {
   MessageCircle,
   MessageSquare,
   Users,
+  UserCheck,
 } from "lucide-react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -42,6 +43,7 @@ const Sidebar = ({ isOpen, onClose, headerHeight }) => {
   const topNavItems = [
     { icon: <BarChart2 className="w-5 h-5 text-[#ced2d8]" />, label: "Analytics", page: "analytics" },
     { icon: <Users className="w-5 h-5 text-[#ced2d8]" />, label: "Community", page: "community" },
+    { icon: <UserCheck className="w-5 h-5 text-[#ced2d8]" />, label: "Teacher Directory", page: "teacher-directory" },
   ];
 
   return (

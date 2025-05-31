@@ -37,6 +37,7 @@ import WalletConnection from "@/pages/aurora-site/wallet/wallet-connection";
 // 🌐 Community & Interaction
 import AuroraChat from "@/pages/aurora-site/aurora-chat";
 import CommunityInteractionPage from "@/pages/aurora-site/community/community";
+import TeacherDirectoryPage from "@/pages/aurora-site/teacher-directory/teacher-directory";
 
 // 📊 Analytics & Categories
 import Analytics from "@/pages/aurora-site/analytics";
@@ -119,6 +120,7 @@ function App() {
                 <Route path="/listening" element={<ListeningPage />} />
                 <Route path="/reading" element={<ReadingContent />} />
                 <Route path="/community" element={<CommunityInteractionPage />} />
+                <Route path="/teacher-directory" element={<TeacherDirectoryPage />} />
                 <Route path="/question-creator" element={<QuestionCreator />} />
               {/*</Route>*/}
             </Route>
