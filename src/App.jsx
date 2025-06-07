@@ -71,6 +71,9 @@ import GrammarContent from "@/pages/aurora-site/grammar-content";
 // ✨ Question Creator
 import QuestionCreator from "@/components/practices/question-creator/question-creator";
 
+// 🌐 Public Profile
+import PublicProfile from "@/pages/public-profile/public-profile";
+
 function App() {
   return (
     <Router>
@@ -81,6 +84,9 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/verify-email" element={<VerifyEmailPage />} />
+
+            {/* Public profile route - no MainLayout needed */}
+            <Route path="/u/:username" element={<PublicProfile />} />
 
             {/* Public route */}
             <Route element={<MainLayout />}>
