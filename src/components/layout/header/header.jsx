@@ -7,8 +7,10 @@ import NavMobile from "./nav-mobile";
 import SearchBar from "./search-bar";
 import AuthButtons from "./auth-buttons";
 import MobileTopButtons from "./mobile-top-buttons";
-import { Lightbulb, LineChart, Bell, Settings } from "lucide-react";
+import { Lightbulb, LineChart, Bell, Settings} from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+
+
 
 const mockNotifications = [
   {
@@ -39,6 +41,7 @@ const Header = ({ onMenuClick }) => {
    const [showNotifications, setShowNotifications] = useState(false);
    const notificationRef = useRef(null);
 
+
    const handleSettingsClick = () => {
       header.navigate('/settings');
    };
@@ -64,7 +67,7 @@ const Header = ({ onMenuClick }) => {
    return (
       <>
          <header className="sticky top-0 bg-[#0d1117] text-white z-50">
-            <div className="container mx-auto px-3 sm:px-4 flex items-center justify-between h-16">
+            <div className="container mx-auto  sm:px-4 flex items-center justify-between h-16">
                <div className="flex items-center space-x-4">
                   <button
                      onClick={onMenuClick}

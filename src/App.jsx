@@ -1,6 +1,7 @@
 // 📦 External Libraries
 import { AuthProvider } from "@/context/AuthContext";
 import { ToastContextProvider } from "@/context/ToastContext";
+import "../src/lib/polyfills"
 import {
   Navigate,
   Route,
