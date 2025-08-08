@@ -22,6 +22,7 @@ import ListeningPage from "@/pages/aurora-site/learning/listening-content";
 import ReadingContent from "@/pages/aurora-site/learning/reading-content";
 import SpeakingPage from "@/pages/aurora-site/learning/speaking-content";
 import VocabularyPage from "@/pages/aurora-site/learning/vocabulary-content";
+import ConversationAssessmentPage from "@/pages/aurora-site/learning/conversation-assessment";
 import BusinessEnglish from "@/pages/learning/business-english";
 
 // 🎓 Certifications & Courses
@@ -80,7 +81,6 @@ import PublicProfile from "@/pages/public-profile/public-profile";
 import LeaderboardPage from "@/pages/aurora-site/community/leaderboard";
 import CertificatePage from "@/pages/aurora-site/certificate";
 import MyRequestsPage from "@/pages/aurora-site/my-requests";
-
 
 function App() {
   return (
@@ -158,6 +158,10 @@ function App() {
               <Route path="/speaking" element={<SpeakingPage />} />
               <Route path="/listening" element={<ListeningPage />} />
               <Route path="/reading" element={<ReadingContent />} />
+              <Route
+                path="/conversation-assessment"
+                element={<ConversationAssessmentPage />}
+              />
               <Route path="/community" element={<CommunityInteractionPage />} />
               <Route
                 path="/teacher-directory"

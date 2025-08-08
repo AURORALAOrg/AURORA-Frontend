@@ -13,7 +13,7 @@ import {
   MessageSquare,
   Users,
   UserCheck,
-  Award
+  Award,
 } from "lucide-react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -42,6 +42,11 @@ const Sidebar = ({ isOpen, onClose }) => {
     {
       icon: <MessageCircle className="w-5 h-5 text-[#ced2d8]" />,
       label: "Speaking",
+    },
+    {
+      icon: <Award className="w-5 h-5 text-[#ced2d8]" />,
+      label: "Conversation-assessment",
+      display: "Conversation Assessment",
     },
     {
       icon: <Headphones className="w-5 h-5 text-[#ced2d8]" />,
@@ -207,7 +212,9 @@ const Sidebar = ({ isOpen, onClose }) => {
                           }}
                         >
                           {item.icon}
-                          <span className="text-sm">{item.label}</span>
+                          <span className="text-sm">
+                            {item.display || item.label}
+                          </span>
                         </button>
                       </NavLink>
                     ))}
