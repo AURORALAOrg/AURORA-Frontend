@@ -80,7 +80,8 @@ import PublicProfile from "@/pages/public-profile/public-profile";
 import LeaderboardPage from "@/pages/aurora-site/community/leaderboard";
 import CertificatePage from "@/pages/aurora-site/certificate";
 import MyRequestsPage from "@/pages/aurora-site/my-requests";
-
+import PronunciationAssessmentPage from "@/pages/aurora-site/assessment/pronunciation-assessment";
+import ListeningComprehensionPage from "@/pages/aurora-site/assessment/listening-comprehension";
 
 function App() {
   return (
@@ -172,6 +173,8 @@ function App() {
               <Route path="/team" element={<GitHubProfiles />} />
               <Route path="/nft-interact" element={<NFTInteract />} />
               <Route path="/certificate" element={<CertificatePage />} />
+              <Route path="/assessment/pronunciation" element={<PronunciationAssessmentPage />} />
+              <Route path="/assessment/listening" element={<ListeningComprehensionPage />} />
 
               {/*</Route>*/}
             </Route>
